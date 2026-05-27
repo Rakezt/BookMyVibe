@@ -29,7 +29,7 @@ export const getMyBookings = asyncHandler(
 
     res.status(200).json({
       success: true,
-      message: 'Booking list',
+      message: 'User booking list',
       data: result,
     });
   },
