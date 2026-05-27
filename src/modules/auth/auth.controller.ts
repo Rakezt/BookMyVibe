@@ -19,28 +19,60 @@ export const register = asyncHandler(async (req: Request, res: Response) => {
 
 export const login = asyncHandler(async (req: Request, res: Response) => {
   const result = await loginUser(req.body);
-  res
-    .status(200)
-    .json({ success: true, message: 'Login successful', data: result });
+
+  res.cookie('accessToken', result.accessToken, {
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    maxAge: 15 * 60 * 1000,
+  });
+
+  res.cookie('refreshToken', result.refreshToken, {
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  });
+  res.status(200).json({
+    success: true,
+    data: result.user,
+  });
 });
 
 export const refreshToken = asyncHandler(
   async (req: Request, res: Response) => {
-    const { refreshToken } = req.body;
+    const refreshToken = req.cookies.refreshToken;
 
     const result = await refreshTokenService(refreshToken);
 
+    res.cookie('accessToken', result.accessToken, {
+      httpOnly: true,
+      secure: false,
+      sameSite: 'lax',
+      maxAge: 15 * 60 * 1000,
+    });
+
+    res.cookie('refreshToken', result.refreshToken, {
+      httpOnly: true,
+      secure: false,
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
     res.status(200).json({
       success: true,
-      data: result,
     });
   },
 );
 export const logout = asyncHandler(async (req: AuthRequest, res: Response) => {
   const result = await logoutService(req.user.userId);
 
+  res.clearCookie('accessToken');
+
+  res.clearCookie('refreshToken');
+
   res.status(200).json({
     success: true,
-    data: result,
+    message: 'Logged out successfully',
   });
 });

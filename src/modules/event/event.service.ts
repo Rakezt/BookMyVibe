@@ -1,6 +1,7 @@
 import { STATUS_CODES } from '../../constants/statusCodes';
 import eventBus from '../../jobs/eventBus';
 import ApiError from '../../utils/ApiError';
+import { getCache, setCache } from '../../utils/cache';
 import { parseExcelFile } from '../../utils/excel';
 import {
   bulkCreateEventsRepository,
@@ -55,7 +56,19 @@ export const deleteEventService = async (eventId: string, userId: string) => {
 };
 
 export const getEventsService = async (query: any) => {
-  return getEventsRepository(query, {});
+  const cacheKey = JSON.stringify(query);
+
+  const cached = getCache(cacheKey);
+
+  if (cached) {
+    return cached;
+  }
+
+  const events = await getEventsRepository(query, {});
+
+  setCache(cacheKey, events);
+
+  return events;
 };
 
 export const getSingleEventService = async (eventId: string) => {

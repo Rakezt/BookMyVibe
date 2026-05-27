@@ -24,9 +24,8 @@ export const getEventsRepository = async (filters: any, options: any) => {
   const query: any = {};
 
   if (search) {
-    query.title = {
-      $regex: search,
-      $options: 'i',
+    query.$text = {
+      $search: search,
     };
   }
 
@@ -36,7 +35,7 @@ export const getEventsRepository = async (filters: any, options: any) => {
 
   const skip = (page - 1) * limit;
 
-  const events = await Event.find(query).skip(skip).limit(limit).sort({
+  const events = await Event.find(query).lean().skip(skip).limit(limit).sort({
     createdAt: -1,
   });
 

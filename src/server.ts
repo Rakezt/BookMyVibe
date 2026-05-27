@@ -8,7 +8,9 @@ import { initSocket } from './config/socket';
 
 const startServer = async () => {
   try {
-    await mongoose.connect(env.MONGO_URI);
+    await mongoose.connect(env.MONGO_URI, {
+      maxPoolSize: 10,
+    });
 
     console.log('MongoDB Connected');
     const server = http.createServer(app);

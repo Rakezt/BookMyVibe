@@ -13,13 +13,11 @@ const authMiddleware = (
   res: Response,
   next: NextFunction,
 ) => {
-  const authHeader = req.headers.authorization;
+  const token = req.cookies.accessToken;
 
-  if (!authHeader) {
+  if (!token) {
     throw new ApiError(STATUS_CODES.UNAUTHORIZED, 'Access denied');
   }
-
-  const token = authHeader.split(' ')[1];
 
   try {
     const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET);

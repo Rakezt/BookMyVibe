@@ -46,9 +46,21 @@ export const loginUser = async (payload: any) => {
     role: user.role,
   });
   const refreshToken = generateRefreshToken({ userId: user._id });
+
   user.refreshToken = refreshToken;
+
   await user.save();
-  return { accessToken, refreshToken };
+
+  return {
+    accessToken,
+    refreshToken,
+    user: {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    },
+  };
 };
 
 export const refreshTokenService = async (refreshToken: string) => {

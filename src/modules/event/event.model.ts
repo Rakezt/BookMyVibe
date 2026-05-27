@@ -44,6 +44,18 @@ const eventSchema = new Schema(
   },
 );
 
+eventSchema.index({
+  organizerId: 1,
+});
+
+eventSchema.index({
+  location: 1,
+});
+
+eventSchema.index({
+  title: 'text',
+});
+
 const Event = mongoose.model('Event', eventSchema, 'events');
 
 export default Event;
