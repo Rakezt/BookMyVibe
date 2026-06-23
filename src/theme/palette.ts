@@ -1,5 +1,3 @@
-// src/theme/palette.ts
-
 export const palette = {
   primary: {
     main: '#6C5CE7',
