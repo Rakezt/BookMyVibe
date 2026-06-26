@@ -12,6 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Logo from '../../common/logo/logo';
 
 export default function Navbar() {
   return (
@@ -24,15 +25,7 @@ export default function Navbar() {
       }}
     >
       <Toolbar>
-        <Typography
-          variant='h6'
-          sx={{
-            fontWeight: 700,
-            color: 'primary.main',
-          }}
-        >
-          BookMyVibe
-        </Typography>
+        <Logo />
         <Box sx={{ flexGrow: 1 }} />
         <TextField
           size='small'

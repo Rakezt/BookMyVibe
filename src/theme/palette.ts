@@ -1,4 +1,8 @@
-export const palette = {
+import { PaletteOptions } from '@mui/material/styles';
+
+export const palette: PaletteOptions = {
+  mode: 'dark',
+
   primary: {
     main: '#6C5CE7',
     light: '#8B7CFF',
