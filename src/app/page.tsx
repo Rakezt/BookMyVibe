@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import DashboardLayout from '../components/layout/dashboard-layout/dashboard-layout';
+import DashboardLayout from '../components/layout/app-shell/dashboard-layout';
 
 export default function HomePage() {
   return (
