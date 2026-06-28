@@ -1,9 +1,14 @@
 export const LAYOUT = {
-  NAVBAR_HEIGHT: 72,
+  navbar: {
+    height: 72,
+  },
 
-  SIDEBAR_WIDTH: 280,
+  sidebar: {
+    width: 280,
+    collapsedWidth: 88,
+  },
 
-  SIDEBAR_COLLAPSED_WIDTH: 88,
-
-  FOOTER_HEIGHT: 56,
+  footer: {
+    height: 56,
+  },
 } as const;
