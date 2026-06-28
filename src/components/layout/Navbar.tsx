@@ -19,6 +19,10 @@ import {
 import { LAYOUT } from './layout.constants';
 import Logo from '../common/logo/logo';
 
+type NavbarProps = {
+  showMenu?: boolean;
+};
+
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   background: theme.palette.background.paper,
   backdropFilter: 'blur(18px)',
@@ -43,11 +47,11 @@ const SearchBox = styled(TextField)(({ theme }) => ({
   },
 }));
 
-export default function Navbar() {
+export default function Navbar({ showMenu = false }: NavbarProps) {
   return (
     <StyledAppBar position='sticky' elevation={0}>
       <StyledToolbar>
-        <Stack sx={{ direction: 'row', alignItems: 'center', spacing: 2 }}>
+        <Stack direction='row' spacing={2} sx={{ alignItems: 'center' }}>
           <IconButton color='inherit'>
             <MenuRoundedIcon />
           </IconButton>
@@ -66,7 +70,7 @@ export default function Navbar() {
           }}
         />
 
-        <Stack sx={{ direction: 'row', alignItems: 'center', spacing: 2 }}>
+        <Stack direction='row' spacing={2} sx={{ alignItems: 'center' }}>
           <IconButton color='inherit'>
             <NotificationsNoneRoundedIcon />
           </IconButton>
