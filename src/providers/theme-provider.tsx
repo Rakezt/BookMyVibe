@@ -1,7 +1,10 @@
 'use client';
+
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
-import { bookMyVibeTheme } from '../theme';
 import CssBaseline from '@mui/material/CssBaseline';
+
+import { bookMyVibeTheme } from '../theme';
 
 type Props = {
   children: React.ReactNode;
@@ -9,9 +12,11 @@ type Props = {
 
 export default function AppThemeProvider({ children }: Props) {
   return (
-    <ThemeProvider theme={bookMyVibeTheme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
+    <AppRouterCacheProvider>
+      <ThemeProvider theme={bookMyVibeTheme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </AppRouterCacheProvider>
   );
 }

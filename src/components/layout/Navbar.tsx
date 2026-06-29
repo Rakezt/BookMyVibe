@@ -52,9 +52,11 @@ export default function Navbar({ showMenu = false }: NavbarProps) {
     <StyledAppBar position='sticky' elevation={0}>
       <StyledToolbar>
         <Stack direction='row' spacing={2} sx={{ alignItems: 'center' }}>
-          <IconButton color='inherit'>
-            <MenuRoundedIcon />
-          </IconButton>
+          {showMenu && (
+            <IconButton color='inherit'>
+              <MenuRoundedIcon />
+            </IconButton>
+          )}
           <Logo />
         </Stack>
         <SearchBox

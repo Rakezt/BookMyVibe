@@ -1,4 +1,5 @@
 import AppShell from '@/src/components/layout/AppShell';
+import Navbar from '@/src/components/layout/Navbar';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
@@ -26,5 +27,10 @@ type Props = {
 };
 
 export default function PortalLayout({ children }: Props) {
-  return <AppShell navigation={navigation}>{children}</AppShell>;
+  return (
+    <AppShell navigation={navigation}>
+      <Navbar showMenu />
+      {children}
+    </AppShell>
+  );
 }

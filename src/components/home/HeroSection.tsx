@@ -2,10 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-
 import {
   Box,
   Button,
@@ -15,9 +13,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-
 import { motion } from 'framer-motion';
-
 export default function HeroSection() {
   const router = useRouter();
   const [search, setSearch] = useState('');

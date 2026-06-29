@@ -10,15 +10,11 @@ import { shape } from './shape';
 
 export const bookMyVibeTheme = createTheme({
   palette,
-
   typography,
-
   components,
-
   shape: {
     borderRadius: shape.borderRadius,
   },
-
   custom: {
     gradients,
 
