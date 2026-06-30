@@ -15,6 +15,10 @@ import {
   Typography,
 } from '@mui/material';
 import { Event } from '@/src/features/events/types/event.types';
+import {
+  getOccupancyColor,
+  getStatusColor,
+} from '@/src/features/events/constants/event-category';
 
 type EventCardProps = {
   event: Event;
@@ -56,9 +60,19 @@ export default function EventCard({ event }: EventCardProps) {
           }}
         />
 
-        <Chip
+        {/* <Chip
           label={event.category}
           color='primary'
+          sx={{
+            position: 'absolute',
+            top: 16,
+            left: 16,
+          }}
+        /> */}
+        <Chip
+          label={event.status}
+          color={getStatusColor(event.status)}
+          size='small'
           sx={{
             position: 'absolute',
             top: 16,
@@ -67,7 +81,7 @@ export default function EventCard({ event }: EventCardProps) {
         />
 
         <Chip
-          label={`₹${event.ticketPrice}`}
+          label={`₹${event.ticketPrice.toLocaleString('en-IN')}`}
           color='secondary'
           sx={{
             position: 'absolute',
@@ -122,17 +136,55 @@ export default function EventCard({ event }: EventCardProps) {
             <Typography
               variant='body2'
               sx={{
-                mb: 1,
+                fontWeight: 600,
               }}
             >
-              {event.occupancyRate}% Occupied
+              🎫 {event.availableTickets.toLocaleString()} Tickets Left
             </Typography>
 
-            <LinearProgress variant='determinate' value={event.occupancyRate} />
+            <Box>
+              <Typography
+                variant='body2'
+                sx={{
+                  mb: 1,
+                  color: 'text.secondary',
+                }}
+              >
+                {event.occupancyRate}% Filled
+              </Typography>
+
+              <LinearProgress
+                variant='determinate'
+                color={getOccupancyColor(event.occupancyRate)}
+                value={event.occupancyRate}
+                sx={(theme) => ({
+                  height: 8,
+                  borderRadius: theme.custom.shape.radius.pill,
+
+                  '& .MuiLinearProgress-bar': {
+                    borderRadius: theme.custom.shape.radius.pill,
+                  },
+                })}
+              />
+            </Box>
           </Box>
 
-          <Typography color='text.secondary'>
-            Organizer: {event.organizer.name}
+          <Typography
+            variant='body2'
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
+            Organized by{' '}
+            <Box
+              component='span'
+              sx={{
+                color: 'text.primary',
+                fontWeight: 600,
+              }}
+            >
+              {event.organizer.name}
+            </Box>
           </Typography>
 
           <Button
