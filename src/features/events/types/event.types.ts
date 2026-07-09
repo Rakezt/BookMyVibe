@@ -71,3 +71,8 @@ export interface GetEventsResponse {
     pagination: Pagination;
   };
 }
+
+export interface GetEventByIdResponse {
+  success: boolean;
+  data: Event;
+}

@@ -1,7 +1,7 @@
 export const gradients = {
-  primary: 'linear-gradient(135deg,#6C5CE7 0%,#00D4FF 100%)',
+  primary: 'linear-gradient(135deg,#C75A00 0%,#E67E22 100%)',
 
-  secondary: 'linear-gradient(135deg,#5848D6 0%,#6C5CE7 100%)',
+  secondary: 'linear-gradient(135deg,#475569 0%,#64748B 100%)',
 
-  surface: 'linear-gradient(180deg,#121A2E 0%,#0F172A 100%)',
+  surface: 'linear-gradient(180deg,#FFFFFF 0%,#F9FAFB 100%)',
 };

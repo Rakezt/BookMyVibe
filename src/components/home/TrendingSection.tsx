@@ -7,8 +7,9 @@ export const TrendingSection = () => {
   const { data, isPending, isError } = useEvents({
     limit: 8,
   });
-  console.log('DATA', data);
+
   const events = data?.pages.flatMap((page) => page.data.events ?? []) ?? [];
+
   if (isPending) {
     return (
       <Grid container spacing={3}>

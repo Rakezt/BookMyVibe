@@ -1,11 +1,11 @@
 export const customShadows = {
-  card: '0px 8px 24px rgba(0,0,0,0.25)',
+  card: '0px 8px 24px rgba(15,23,42,.08)',
 
-  hover: '0px 16px 40px rgba(0,0,0,0.35)',
+  hover: '0px 16px 40px rgba(15,23,42,.12)',
 
-  dialog: '0px 24px 60px rgba(0,0,0,0.45)',
+  dialog: '0px 24px 60px rgba(15,23,42,.18)',
 
-  primary: '0px 8px 30px rgba(108,92,231,.35)',
+  primary: '0px 8px 30px rgba(199,90,0,.25)',
 
-  cyan: '0px 8px 30px rgba(0,212,255,.35)',
+  secondary: '0px 8px 30px rgba(71,85,105,.18)',
 };
