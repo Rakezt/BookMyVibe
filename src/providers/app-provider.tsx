@@ -1,4 +1,5 @@
 'use client';
+import AuthProvider from './auth-provider';
 import QueryProvider from './query-provider';
 import ReduxProvider from './redux-provider';
 import AppThemeProvider from './theme-provider';
@@ -10,7 +11,9 @@ export default function AppProvider({ children }: Props) {
   return (
     <ReduxProvider>
       <QueryProvider>
-        <AppThemeProvider>{children}</AppThemeProvider>
+        <AuthProvider>
+          <AppThemeProvider>{children}</AppThemeProvider>
+        </AuthProvider>
       </QueryProvider>
     </ReduxProvider>
   );
