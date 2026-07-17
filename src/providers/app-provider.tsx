@@ -11,9 +11,9 @@ export default function AppProvider({ children }: Props) {
   return (
     <ReduxProvider>
       <QueryProvider>
-        <AuthProvider>
-          <AppThemeProvider>{children}</AppThemeProvider>
-        </AuthProvider>
+        <AppThemeProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </AppThemeProvider>
       </QueryProvider>
     </ReduxProvider>
   );

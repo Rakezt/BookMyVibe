@@ -14,7 +14,7 @@ declare module '@mui/material/styles' {
         hover: string;
         dialog: string;
         primary: string;
-        cyan: string;
+        // cyan: string;
       };
 
       transitions: {
