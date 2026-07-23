@@ -19,12 +19,13 @@ import {
   getOccupancyColor,
   getStatusColor,
 } from '@/src/features/events/constants/event-category';
+import { memo } from 'react';
 
 type EventCardProps = {
   event: Event;
 };
 
-export default function EventCard({ event }: EventCardProps) {
+const EventCard = ({ event }: EventCardProps) => {
   const router = useRouter();
 
   return (
@@ -198,4 +199,5 @@ export default function EventCard({ event }: EventCardProps) {
       </CardContent>
     </Card>
   );
-}
+};
+export default memo(EventCard);

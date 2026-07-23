@@ -62,6 +62,7 @@ export interface GetEventsParams {
   limit?: number;
   search?: string;
   city?: string;
+  category?: string;
 }
 export interface GetEventsResponse {
   success: boolean;
@@ -69,10 +70,30 @@ export interface GetEventsResponse {
     events: Event[];
     total: number;
     pagination: Pagination;
+    filters: {
+      cities: string[];
+      categories: string[];
+    };
   };
 }
 
 export interface GetEventByIdResponse {
   success: boolean;
   data: Event;
+}
+
+export interface EventSearchProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+export interface EventFiltersProps {
+  city: string;
+  category: string;
+
+  cities: string[];
+  categories: string[];
+
+  onCityChange: (value: string) => void;
+  onCategoryChange: (value: string) => void;
 }

@@ -59,7 +59,7 @@ export default function Navbar({ showMenu = false }: NavbarProps) {
           )}
           <Logo />
         </Stack>
-        <SearchBox
+        {/* <SearchBox
           placeholder='Search events...'
           slotProps={{
             input: {
@@ -70,7 +70,7 @@ export default function Navbar({ showMenu = false }: NavbarProps) {
               ),
             },
           }}
-        />
+        /> */}
 
         <Stack direction='row' spacing={2} sx={{ alignItems: 'center' }}>
           <IconButton color='inherit'>
