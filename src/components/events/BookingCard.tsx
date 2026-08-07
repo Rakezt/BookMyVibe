@@ -14,6 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Event } from '@/src/features/events/types/event.types';
+import { useCreateBooking } from '@/src/features/bookings/hooks/use-create-booking';
 
 type Props = {
   event: Event;
@@ -37,6 +38,8 @@ export default function BookingCard({ event }: Props) {
 
     setQuantity((prev) => prev - 1);
   };
+
+  const { mutate, isPending } = useCreateBooking();
 
   return (
     <Paper
@@ -124,7 +127,7 @@ export default function BookingCard({ event }: Props) {
 
         <Divider />
 
-        <Stack sx={{ direction: 'row', justifyContent: 'space-between' }}>
+        <Stack direction='row' sx={{ justifyContent: 'space-between' }}>
           <Typography
             sx={{
               fontWeight: 600,
@@ -147,14 +150,15 @@ export default function BookingCard({ event }: Props) {
           variant='contained'
           size='large'
           fullWidth
-          onClick={() => {
-            console.log({
+          disabled={event.availableTickets === 0 || isPending}
+          onClick={() =>
+            mutate({
               eventId: event._id,
               quantity,
-            });
-          }}
+            })
+          }
         >
-          Book Now
+          {isPending ? 'Booking...' : 'Book Now'}
         </Button>
       </Stack>
     </Paper>

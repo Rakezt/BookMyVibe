@@ -9,6 +9,7 @@ import EventFilters from '@/src/components/events/EventFilters';
 import EventSearch from '@/src/components/events/EventSearch';
 import LoadMoreTrigger from '@/src/components/events/LoadMoreTrigger';
 import { useDebounce } from 'use-debounce';
+import EmptyState from '@/src/components/common/EmptyState/EmptyState';
 
 export default function EventsPage() {
   const [searchInput, setSearchInput] = useState('');
@@ -51,14 +52,34 @@ export default function EventsPage() {
         py: 5,
       }}
     >
-      <Typography
-        variant='h3'
+      <Box
         sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
           mb: 4,
         }}
       >
-        Explore Events
-      </Typography>
+        <Box>
+          <Typography
+            variant='h3'
+            sx={{
+              mb: 1,
+            }}
+          >
+            Search Events
+          </Typography>
+
+          <Typography
+            variant='body1'
+            sx={{
+              color: 'text.secondary',
+            }}
+          >
+            {data?.pages[0]?.data.pagination.total ?? 0} Events Found
+          </Typography>
+        </Box>
+      </Box>
 
       <EventSearch value={searchInput} onChange={setSearchInput} />
 
@@ -91,16 +112,10 @@ export default function EventsPage() {
           </Grid>
         ))}
 
-        {events.length === 0 && (
-          <Typography
-            align='center'
-            sx={{
-              mt: 8,
-            }}
-          >
-            No events found.
-          </Typography>
-        )}
+        <EmptyState
+          title='No Events Found'
+          description='Try changing the search or filters.'
+        />
       </Grid>
 
       <LoadMoreTrigger

@@ -30,6 +30,7 @@ const EventCard = ({ event }: EventCardProps) => {
 
   return (
     <Card
+      onClick={() => router.push(`/events/${event._id}`)}
       sx={(theme) => ({
         maxWidth: 360,
         width: '100%',
